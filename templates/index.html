@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Clicker Game</h1>
+        <p>Ваш текущий баланс: <strong>{{ balance }}</strong> монет</p>
+        <a href="{{ url_for('click', id=telegram_id) }}">
+            <img src="{{ url_for('static', filename='img/coin.png') }}" alt="Кликни на монетку" class="coin-image">
+        </a>
+        <p>Ваш текущий уровень улучшений: <strong>{{ upgrade_level }}</strong></p>
+        <p><a href="{{ url_for('upgrade', id=telegram_id) }}">Купить улучшение (0.05 монет)</a></p>
+        <p><a href="{{ url_for('leaderboard') }}">Топ игроков</a></p>
+        <p><a href="{{ url_for('referrals', id=telegram_id) }}">Реферальная система</a></p>
+        <script async src="https://telegram.org/js/telegram-widget.js?7" data-telegram-login="@eefcoin_bot" data-size="large" data-radius="10" data-auth-url="{{ url_for('index') }}" data-request-access="write"></script>
+    </div>
+</body>
+</html>
